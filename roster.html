@@ -1,9 +1,30 @@
 <!DOCTYPE HTML>
 <html>
-  <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>No Agreements | Roster</title>
     <link rel="icon" href="doggie.png">
     <link rel="stylesheet" type="text/css" href="roster.css">
+    <script>
+      function showTab(tab) {
+        // Hide all
+        hideAllChildren('descriptions');
+        hideAllChildren('content');
+
+        // Show selected description and content
+        document.getElementById(tab + 'description').style.display = ''
+        document.getElementById(tab).style.display = ''
+      }
+      function hideAllChildren(id) {
+        var parent = document.getElementById(id);
+        parent.style.display = '';
+        Array.from(parent.children)
+          .forEach(element => element.style.display = 'none');
+      }
+      window.onload = function() {
+        showTab('label');
+      }
+    </script>
   </head>
   <body>
     <div id="sidebar">
@@ -40,22 +61,23 @@
     <div id="creatortabs">
       <div id="creatorflex">
         <div id="labelblock">
-          <a id="labeltab" onclick="labelinvis.id= 'label'; labeldescriptioninvis.id= 'labeldescription'; collective.id= 'collectiveinvis'; collectivedescription.id= 'collectivedescriptioninvis'; art.id= 'artinvis'; artdescription= 'artdescriptioninvis'; hoverstatetab1.id= 'hoverstatetab1solid'; hoverstatetab2solid.id= 'hoverstatetab2'; hoverstatetab3solid.id= 'hoverstatetab3'; ">LABEL</a>
+          <a id="labeltab" onclick="showTab('label')">LABEL</a>
         </div>
         <div id="collectiveblock">
-          <a id="collectivetab" onclick="collectiveinvis.id= 'collective'; collectivedescriptioninvis.id= 'collectivedescription'; label.id= 'labelinvis'; labeldescription.id= 'labeldescriptioninvis'; art.id= 'artinvis'; artdescription= 'artdescriptioninvis'; hoverstatetab2.id= 'hoverstatetab2solid'; hoverstatetab1solid.id= 'hoverstatetab1'; hoverstatetab3solid.id= 'hoverstatetab3'; ">COLLECTIVE</a>
+          <a id="collectivetab" onclick="showTab('collective')">COLLECTIVE</a>
         </div>
         <div id="artblock">
-          <a id="arttab" onclick="artinvis.id= 'art'; artdescriptioninvis.id= 'artdescription'; collective.id= 'collectiveinvis'; collectivedescription.id= 'collectivedescriptioninvis'; label.id= 'labelinvis'; labeldescription.id= 'labeldescriptioninvis'; hoverstatetab3.id= 'hoverstatetab3solid'; hoverstatetab1solid.id= 'hoverstatetab1'; hoverstatetab2solid.id= 'hoverstatetab2'; ">ART DEPARTMENT</a>
+          <a id="arttab" onclick="showTab('art')">ART DEPARTMENT</a>
         </div>
       </div>
-      <div id="descriptions">
+      <div id="descriptions" style="display: none">
         <span id="labeldescription">Core members of the No Agreements music label</span>
-        <span id="collectivedescriptioninvis">All members of the No Agreements collective</span>
-        <span id="artdescriptioninvis">Members at the helm of visual arts for No Agreements</span>
+        <span id="collectivedescription">All members of the No Agreements collective</span>
+        <span id="artdescription">Members at the helm of visual arts for No Agreements</span>
       </div>
     </div>
 
+    <div id="content" style="display: none">
     <div id="label">
       <div id="acetantina" class="creator">
         <a href="https://kaizoslumber.xyz/" target="_blank"><img src="acetantina.png" class="image"></a><br>
@@ -135,7 +157,7 @@
       </div>
     </div>
 
-    <div id="collectiveinvis">
+    <div id="collective">
       <div id="acetantina" class="creator">
         <a href="https://kaizoslumber.xyz/" target="_blank"><img src="acetantina.png" class="image"></a><br>
         <a href="https://kaizoslumber.xyz/" target="_blank" class="title">Acetantina/<br>Kaizo Slumber</a>
@@ -306,7 +328,7 @@
       </div>
     </div>
 
-    <div id="artinvis">
+    <div id="art">
       <div id="city light mosaic" class="creator">
         <a href="https://soundcloud.com/citylightmosaic" target="_blank"><img src="citylight.jpg" class="image"></a><br>
         <a href="https://soundcloud.com/citylightmosaic" target="_blank" class="title">City Light Mosaic</a>
@@ -331,6 +353,7 @@
         <a target="_blank"><img src="peter.jpeg" class="image"></a><br>
         <a target="_blank" class="title">Peter Sullivan</a>
       </div>
+    </div>
     </div>
 
     <div id="linkbarmobile">
